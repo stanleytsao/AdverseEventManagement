@@ -21,15 +21,31 @@ var EventsComponent = (function () {
     }
     EventsComponent.prototype.addEvent = function (event) {
         var _this = this;
+        console.log(event);
         event.preventDefault();
         var newEvent = {
             receiveDate: this.receiveDate,
-            receiptDate: this.receiptDate
+            receiptDate: this.receiptDate,
+            patient: {
+                drugs: [{
+                        autorizationNumber: this.autorizationNumber,
+                        DosageText: this.DosageText,
+                        medicinalProduct: this.medicinalProduct,
+                        drugIndication: this.drugIndication
+                    }],
+                reaction: [{
+                        meddraPrimaryTerm: this.meddraPrimaryTerm
+                    }],
+                age: this.age,
+                sex: this.sex
+            },
+            safetyReportId: this.safetyReportId,
+            companyNumber: this.companyNumber
         };
         this.eventService.addEvent(newEvent)
             .subscribe(function (event) {
             _this.events.push(event);
-            _this.title = '';
+            // this.title = '';
         });
     };
     EventsComponent.prototype.deleteEvent = function (id) {
@@ -42,16 +58,6 @@ var EventsComponent = (function () {
                     }
                 }
             }
-        });
-    };
-    EventsComponent.prototype.updateStatus = function (event) {
-        var _event = {
-            _id: event._id,
-            title: event.title,
-            isDone: !event.isDone
-        };
-        this.eventService.updateStatus(_event).subscribe(function (data) {
-            event.isDone = !event.isDone;
         });
     };
     EventsComponent = __decorate([

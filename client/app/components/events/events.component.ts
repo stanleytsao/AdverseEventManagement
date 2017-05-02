@@ -10,9 +10,17 @@ import {Event} from '../../../Event';
 
 export class EventsComponent { 
     events: Event[];
-    title: string;
     receiveDate: string;
     receiptDate: string;
+    age: string;
+    sex: string;
+    autorizationNumber: string;
+    DosageText: string;
+    medicinalProduct: string;
+    drugIndication: string;
+    meddraPrimaryTerm: string;
+    safetyReportId: string;
+    companyNumber: string;
     
     constructor(private eventService:EventService){
         this.eventService.getEvents()
@@ -22,18 +30,32 @@ export class EventsComponent {
     }
     
     addEvent(event){
+        console.log(event);
         event.preventDefault();
         var newEvent = {
             receiveDate: this.receiveDate,
-            receiptDate: this.receiptDate
-            // title: this.title,
-            // isDone: false
+            receiptDate: this.receiptDate,
+            patient: {
+                drugs: [{
+                    autorizationNumber: this.autorizationNumber,
+                    DosageText: this.DosageText,
+                    medicinalProduct: this.medicinalProduct,
+                    drugIndication: this.drugIndication
+                }],
+                reaction: [{
+                    meddraPrimaryTerm: this.meddraPrimaryTerm
+                }],
+                age: this.age,
+                sex: this.sex
+            },
+            safetyReportId: this.safetyReportId,
+            companyNumber: this.companyNumber
         }
         
         this.eventService.addEvent(newEvent)
             .subscribe(event => {
                 this.events.push(event);
-                this.title = '';
+                // this.title = '';
             });
     }
     
@@ -51,15 +73,15 @@ export class EventsComponent {
         });
     }
     
-    updateStatus(event){
-        var _event = {
-            _id:event._id,
-            title: event.title,
-            isDone: !event.isDone
-        };
+    // updateStatus(event){
+    //     var _event = {
+    //         _id:event._id,
+    //         title: event.title,
+    //         isDone: !event.isDone
+    //     };
         
-        this.eventService.updateStatus(_event).subscribe(data => {
-            event.isDone = !event.isDone;
-        });
-    }
+    //     this.eventService.updateStatus(_event).subscribe(data => {
+    //         event.isDone = !event.isDone;
+    //     });
+    // }
 }
