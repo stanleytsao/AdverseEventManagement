@@ -30,7 +30,6 @@ export class EventsComponent {
     }
     
     addEvent(event){
-        console.log(event);
         event.preventDefault();
         var newEvent = {
             receiveDate: this.receiveDate,
@@ -55,7 +54,7 @@ export class EventsComponent {
         this.eventService.addEvent(newEvent)
             .subscribe(event => {
                 this.events.push(event);
-                // this.title = '';
+                location.reload();
             });
     }
     

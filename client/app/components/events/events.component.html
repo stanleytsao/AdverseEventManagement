@@ -1,65 +1,70 @@
 <!-- NEW ENTRY FORM -->
-<form class="form-horizontal" (submit)="addEvent($event)">
-    <h3 class="text-center">New Entry</h3>
-    <div class="form-group col-md-6">
-        <label class="col-md-4 control-label">Receive Date:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="receiveDate" name="receiveDate" class="form-control">
+<form class="form-horizontal new-entry" (submit)="addEvent($event)">
+    <div class="form-group row">
+        <h3 class="text-center">New Entry</h3>
+        <div class="col-md-6">
+            <h4 class="text-center">Patient Info</h4>
+            <label class="col-md-4 control-label">Age:</label>
+            <div class="col-md-8">
+                <input type="number" min=1 [(ngModel)]="age" name="age" class="form-control">
+            </div>
+            <label class="col-md-4 control-label">Sex:</label>
+            <div class="col-md-8">
+                <input type="number" min=1 max=2 title="Enter '1' for Male or '2' for Female" [(ngModel)]="sex" name="sex" class="form-control">
+            </div>
         </div>
-        <label class="col-md-4 control-label">Receipt Date:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="receiptDate" name="receiptDate" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Age:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="age" name="age" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Sex:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="sex" name="sex" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Safety Report ID:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="safetyReportId" name="safetyReportId" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Company Number:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="companyNumber" name="companyNumber" class="form-control">
-        </div>
-    </div>
-    <div class="form-group col-md-6">
-        <h4 class="text-center">Drugs</h4>
-        <label class="col-md-4 control-label">Autorization #:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="autorizationNumber" name="autorizationNumber" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Dosage:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="DosageText" name="DosageText" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Medicinal Product:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="medicinalProduct" name="medicinalProduct" class="form-control">
-        </div>
-        <label class="col-md-4 control-label">Drug Indication:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="drugIndication" name="drugIndication" class="form-control">
-        </div>
-        <br/>
-        <label class="col-md-4 control-label">Reactions:</label>
-        <div class="col-md-8">
-            <input type="text"  [(ngModel)]="meddraPrimaryTerm" name="meddraPrimaryTerm" class="form-control">
+        <div class="col-md-6">
+            <label class="col-md-4 control-label">Receive Date:</label>
+            <div class="col-md-8">
+                <input type="date" min=2017-01-01 [(ngModel)]="receiveDate" name="receiveDate" class="form-control" required>
+            </div>
+            <label class="col-md-4 control-label">Receipt Date:</label>
+            <div class="col-md-8">
+                <input type="date" min=2017-01-01 [(ngModel)]="receiptDate" name="receiptDate" class="form-control" required>
+            </div>
+            <label class="col-md-4 control-label">Safety Report ID:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="safetyReportId" name="safetyReportId" class="form-control" required>
+            </div>
+            <label class="col-md-4 control-label">Company #:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="companyNumber" name="companyNumber" class="form-control" required>
+            </div>
         </div>
     </div>
-    <div class="text-right">
-        <input type="submit" value="Submit">
+    <hr/>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <h4 class="text-center">Drugs</h4>
+            <label class="col-md-4 control-label">Autorization #:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="autorizationNumber" name="autorizationNumber" class="form-control" placeholder="unknown">
+            </div>
+            <label class="col-md-4 control-label">Dosage:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="DosageText" name="DosageText" class="form-control" placeholder="unknown">
+            </div>
+            <label class="col-md-4 control-label">Medicinal Product:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="medicinalProduct" name="medicinalProduct" class="form-control" placeholder="unknown">
+            </div>
+            <label class="col-md-4 control-label">Drug Indication:</label>
+            <div class="col-md-8">
+                <input type="text"  [(ngModel)]="drugIndication" name="drugIndication" class="form-control" placeholder="unknown">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-center">Reactions</h4>
+            <div class="col-md-12">
+                <input type="text"  [(ngModel)]="meddraPrimaryTerm" name="meddraPrimaryTerm" class="form-control reaction" required>
+            </div>
+            <div class="text-right">
+                <input type="submit" value="Submit" class="btn submit-button">
+            </div>
+        </div>
     </div>
 </form>
 <hr/>
-
-
-<!-- <div *ngFor="let event of events; let i=index">
-        <div *ngIf="i<100"> -->
 
 <!-- EVENTS LIST -->
 <div class="event-list">
@@ -75,7 +80,7 @@
                     <p>Receive Date: {{event.receiveDate}}</p>
                     <p>Receipt Date: {{event.receiptDate}}</p>
                     <p>Safety Report Id: {{event.safetyReportId}}</p>
-                    <p>Company Number: {{event.companyNumber}}</p>
+                    <p>Company #: {{event.companyNumber}}</p>
                 </div>
                 <div class="col-md-2">
                     <input type="button" (click)="deleteEvent(event._id)" value="Delete" class="btn btn-danger">    

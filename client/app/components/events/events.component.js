@@ -21,7 +21,6 @@ var EventsComponent = (function () {
     }
     EventsComponent.prototype.addEvent = function (event) {
         var _this = this;
-        console.log(event);
         event.preventDefault();
         var newEvent = {
             receiveDate: this.receiveDate,
@@ -45,7 +44,7 @@ var EventsComponent = (function () {
         this.eventService.addEvent(newEvent)
             .subscribe(function (event) {
             _this.events.push(event);
-            // this.title = '';
+            location.reload();
         });
     };
     EventsComponent.prototype.deleteEvent = function (id) {

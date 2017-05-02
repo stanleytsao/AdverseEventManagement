@@ -3,3 +3,17 @@
 	border-radius: 0.5em;
 	padding: 2em;
 }
+
+.new-entry {
+	background-color: #eee;
+	border-radius: 0.5em;
+	padding: 2em;
+}
+
+.reaction {
+	height: 7em;
+}
+
+.submit-button {
+	margin: 10px 30px 0;
+}
