@@ -5,13 +5,22 @@ var db = mongojs('mongodb://stanley:stanley@ds127801.mlab.com:27801/adverse_even
 
 // Get All Events
 router.get('/events', function(req, res, next){
-    db.events.find(function(err, events){
+    var sort = db.events.find().sort({receiveDate:-1});
+    sort.limit(100, function(err, events){
         if(err){
             res.send(err);
         }
         res.json(events);
     });
 });
+// router.get('/events', function(req, res, next){
+//     db.events.find( {}, {}, {limit:100}, function(err, events){
+//         if(err){
+//             res.send(err);
+//         }
+//         res.json(events);
+//     });
+// });
 
 // Get Single Event
 router.get('/event/:id', function(req, res, next){

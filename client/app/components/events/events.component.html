@@ -1,0 +1,76 @@
+<!-- NEW ENTRY FORM -->
+<form class="form-horizontal" (submit)="addEvent($event)">
+    <h4 class="text-center">New Entry</h4>
+    <div class="form-group col-md-6">
+        <label class="col-md-4 control-label">Receive Date:</label>
+        <div class="col-md-8">
+            <input type="text"  [(ngModel)]="receiveDate" name="receiveDate" class="form-control">
+        </div>
+        <label class="col-md-4 control-label">Receipt Date:</label>
+        <div class="col-md-8">
+            <input type="text"  [(ngModel)]="receiptDate" name="receiptDate" class="form-control">
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label class="col-md-4 control-label">Age:</label>
+        <div class="col-md-8">
+            <input type="text"  [(ngModel)]="age" name="age" class="form-control">
+        </div>
+        <label class="col-md-4 control-label">Sex:</label>
+        <div class="col-md-8">
+            <input type="text"  [(ngModel)]="sex" name="sex" class="form-control">
+        </div>
+    </div>
+    <div class="text-right">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+<hr/>
+
+
+<!-- <div *ngFor="let event of events; let i=index">
+        <div *ngIf="i<100"> -->
+
+<!-- EVENTS LIST -->
+<div class="event-list">
+    <div *ngFor="let event of events">
+        <div class="entry">
+            <div class="row">
+                <div class="col-md-5">
+                    <h5>ID: {{event._id}}</h5>
+                    <p>Age: {{event.patient.age}}</p>
+                    <p>Sex: {{event.patient.sex}}</p>
+                </div>
+                <div class="col-md-5">
+                    <p>Receive Date: {{event.receiveDate}}</p>
+                    <p>Receipt Date: {{event.receiptDate}}</p>
+                    <p>Safety Report Id: {{event.safetyReportId}}</p>
+                    <p>Company Number: {{event.companyNumber}}</p>
+                </div>
+                <div class="col-md-2">
+                    <input type="button" (click)="deleteEvent(event._id)" value="Delete" class="btn btn-danger">    
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-5">
+                    <h5>Drugs</h5>
+                    <div *ngFor="let drug of event.patient.drugs">
+                        <p>Autorization Number: {{drug.autorizationNumber}}</p>
+                        <p>Dosage Text: {{drug.DosageText}}</p>
+                        <p>Medicinal Product: {{drug.medicinalProduct}}</p>
+                        <p>Drug Indication: {{drug.drugIndication}}</p>
+                        <br/>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h5>Reactions</h5>
+                    <ul *ngFor="let react of event.patient.reaction">
+                        <li>{{react.meddraPrimaryTerm}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </div>
+</div>
